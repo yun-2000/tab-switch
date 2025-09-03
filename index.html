@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Switch Tab</title>
+  </head>
+  <body>
+    <nav class="main-nav">
+      <button class="btn" data-index="0">Btn1</button>
+      <button class="btn" data-index="1">Btn2</button>
+      <button class="btn" data-index="2">Btn3</button>
+    </nav>
+    <div class="tab-content active">Content 1</div>
+    <div class="tab-content">Content 2</div>
+    <div class="tab-content">Content 3</div>
+    <main class="main-content">
+      <div class="content"></div>
+    </main>
+    <style>
+      .tab-content {
+        /* content: hidden; */
+        display: none;
+      }
+      .active {
+        display: flex;
+      }
+    </style>
+    <script>
+      const btns = document.querySelectorAll(".btn");
+      function showTabContent(e) {
+        btns.forEach((btn) => btn.classList.remove("active"));
+      }
+      btns.forEach((btn) => {
+        btn.addEventListener("click", showTabContent);
+      });
+    </script>
+  </body>
+</html>
