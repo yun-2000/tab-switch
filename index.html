@@ -11,9 +11,9 @@
       <button class="btn" data-index="1">Btn2</button>
       <button class="btn" data-index="2">Btn3</button>
     </nav>
-    <div class="tab-content active">Content 1</div>
-    <div class="tab-content">Content 2</div>
-    <div class="tab-content">Content 3</div>
+    <div class="tab-content active" data-index="0">Content 1</div>
+    <div class="tab-content" data-index="1">Content 2</div>
+    <div class="tab-content" data-index="2">Content 3</div>
     <main class="main-content">
       <div class="content"></div>
     </main>
@@ -28,8 +28,17 @@
     </style>
     <script>
       const btns = document.querySelectorAll(".btn");
+      const contents = document.querySelectorAll(".tab-content");
       function showTabContent(e) {
-        btns.forEach((btn) => btn.classList.remove("active"));
+        let btn_index = this.dataset.index;
+        // console.log(btn_index);
+        contents.forEach((content) => content.classList.remove("active"));
+        contents.forEach((content) => {
+          if (content.dataset.index === btn_index) {
+            content.classList.add("active");
+          }
+        });
+        // contents.forEach();
       }
       btns.forEach((btn) => {
         btn.addEventListener("click", showTabContent);
